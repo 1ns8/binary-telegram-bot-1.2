@@ -14,8 +14,9 @@ thats a performed version of the original version
    - click on (text to binary)button to convert a text into binary
    - click on (binary to text)button to convert a binary code into a string
 ## Example
-1.user : hello world
-2.bot : 01001000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100
+1 .user : hello world
+
+2. bot : 01001000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100
 ## setup the bot
 1. install the requirments pip3 install -r requirments.txt
 2. go to config.py
