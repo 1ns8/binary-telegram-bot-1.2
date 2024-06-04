@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from config import API_ID, API_HASH, BOT_TOKEN
 from utiles import binary
 from __version__ import __version__
-
+# join us on telegram for more https://t.me/NS8_b
 #setup the bot 
 bi = binary()
 
