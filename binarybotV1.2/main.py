@@ -1,27 +1,11 @@
-
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from config import API_ID, API_HASH, BOT_TOKEN
+from utiles import binary
+from __version__ import __version__
 
-class binary():
-    def __init__(self) -> None:
-        pass
-    
-    def into_binary(self, text):
-        binary_string = ' '.join(format(ord(char), '08b') for char in text)
-        return binary_string
-
-    def binary_to_string(self, binary_string):
-        binary_values = binary_string.split()
-        ascii_characters = [chr(int(bv, 2)) for bv in binary_values]
-        original_string = ''.join(ascii_characters)
-        return original_string
-
+#setup the bot 
 bi = binary()
-
-# setup the bot
-API_ID = 22678824
-API_HASH = '54f5c53ff3aae39ac7c23b6e672b709f'
-BOT_TOKEN = '6584564225:AAFUwq_XsJHJo1mZnhp9bepkC_hVnGQN9u0'
 
 app = Client(
     'binary bot',
@@ -33,14 +17,15 @@ app = Client(
 # tracking the user status
 user_status = None
 
+          
 # inline keyboard 
 start_buttons = [
     [
-        InlineKeyboardButton(text='into binary', callback_data='bi'),
-        InlineKeyboardButton(text='into text', callback_data='text')
+        InlineKeyboardButton(text='text to binary', callback_data='bi'),
+        InlineKeyboardButton(text='binary to text', callback_data='text')
     ]
 ]
-
+#start message
 @app.on_message(filters.command('start'))
 def start(_, message):
     start_message = 'Welcome to binary bot. Please make a choice:'
@@ -50,7 +35,7 @@ def start(_, message):
         text=start_message,
         reply_markup=markup
     )
-
+# callback query
 @app.on_callback_query()
 def callback(_, callback_query: CallbackQuery):
     global user_status
@@ -60,7 +45,7 @@ def callback(_, callback_query: CallbackQuery):
     elif callback_query.data == 'text':
         user_status = 'waiting for text'
         app.send_message(callback_query.message.chat.id, 'Send me a binary code to turn it into a string')
-
+#message_handler
 @app.on_message(filters.text)
 def message_handler(_, message):
     global user_status
@@ -76,5 +61,5 @@ def message_handler(_, message):
             message.reply(f'Here is the text of the binary code:\n\n{binary_string}')
         except:
             message.reply('Sorry, I cannot turn this into a string.')
-
+#run the app
 app.run()
