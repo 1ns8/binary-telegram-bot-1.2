@@ -21,8 +21,8 @@ thats a performed version of the original version
 1. install the requirments pip3 install -r requirments.txt
 2. go to config.py
 3. replace the api_id, api_hash, bot_token with yours
-4. run the file
-note : firstly make a telegram bot with botfather in telegram
+4. run main.py
+
 ## Contact
 you can contact us in our telegram channel https://t.me/NS8_b
 ## Devlopes by NS_8
